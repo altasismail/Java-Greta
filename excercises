@@ -1,0 +1,60 @@
+//4) Créer une fonction qui prend en paramètre un tableau et retourne un tableau d'entier égal aux index de la valeur la plus grande
+//=>
+
+import java.util.Arrays;
+
+class TDAlgo {
+
+    public static void main(String[] arg) {
+
+        int[] tableau = new int[6];
+        tableau[0] = 4;
+        tableau[1] = 7;
+        tableau[2] = 9;
+        tableau[3] = 5;
+        tableau[4] = 9;
+        tableau[5] = 5;
+
+        System.out.println(laPlusGrandeValeur(tableau));
+
+        //System.out.println(laPlusGrandeValeur(tableau));
+
+        int[] tableauResult = indexesPlusGrand(tableau);
+        System.out.println("Mes indexes les plus grands sont :");
+        for (int element : tableauResult) {
+            System.out.println(element);
+        }
+    }
+
+    //3
+    private static int laPlusGrandeValeur(int[] tableau) {
+        int max = Integer.MIN_VALUE;
+        for (int element : tableau) {
+            if (element > max) {
+                max = element;
+            }
+        }
+        return max;
+    }
+
+    //4
+    private static int[] indexesPlusGrand(int[] tableau) {
+        return findIndexesByValue(tableau, laPlusGrandeValeur(tableau));
+    }
+
+    private static int[] findIndexesByValue(int[] tableau, int selectedValue) {
+        int[] tableauRetour = new int[0];
+        for (int index = 0; index < tableau.length; index++) {
+            if (tableau[index] == selectedValue) {
+                tableauRetour = copyAndInsertLast(tableauRetour, index);
+            }
+        }
+        return tableauRetour;
+    }
+
+    private static int[] copyAndInsertLast(int[] tableau, int valeur) {
+        int[] tableauCopy = Arrays.copyOf(tableau, tableau.length + 1);
+        tableauCopy[tableauCopy.length - 1] = valeur;
+        return tableauCopy;
+    }
+}
