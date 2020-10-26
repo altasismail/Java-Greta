@@ -1,0 +1,23 @@
+package ex;
+
+import java.util.Scanner;
+
+public class VmachineDrink {
+    public static void main(String[] args) {
+        System.out.println(" Please give me some money : ");
+        Scanner scanner = new Scanner(System.in);
+        int money = scanner.nextInt();
+        int[] menu = new int[] {1, 2 ,3};
+
+        System.out.println(" Thank you for $" + money + " Choose your Drink :  " + menu[0] + "- Coffee  " + menu[1] + "- Choclate  " + menu[2] + "- Tea");
+
+        int hasMoney = 0; int count =0;
+        while (scanner.hasNextInt()) {
+            hasMoney = scanner.nextInt();
+            money += hasMoney;
+            count++;
+            System.out.println(" Thank you for $" + money + " Choose your Drink :  " + menu[0] + "- Coffee  " + menu[1] + "- Choclate  " + menu[2] + "- Tea");
+        }
+
+    }
+}
